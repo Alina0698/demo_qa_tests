@@ -1,10 +1,14 @@
 package tests.testdata;
 
 public class TestData {
-    // Test Data for PracticeForm
+    // Common Test Data for PracticeForm and TestBox
     public static String firstName = "Alina";
     public static String lastName = "Test";
     public static String userEmail = "test@mail.com";
+    public static String state = "NCR";
+    public static String city = "Delhi";
+
+    // Test Data for PracticeForm
     public static String genderFemale = "Female";
     public static String userNumber = "1234567891";
     public static String yearOfBirth = "1991";
@@ -13,8 +17,7 @@ public class TestData {
     public static String subject = "English";
     public static String hobby = "Sports";
     public static String currentAddress = "Moscow, Lermontova street, 25-70";
-    public static String state = "NCR";
-    public static String city = "Delhi";
+
 
     // Invalid Test Data
     public static String userInvalidNumber = "1234567";
