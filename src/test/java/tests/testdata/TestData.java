@@ -18,7 +18,6 @@ public class TestData {
     public static String hobby = "Sports";
     public static String currentAddress = "Moscow, Lermontova street, 25-70";
 
-
     // Invalid Test Data
     public static String userInvalidNumber = "1234567";
 
