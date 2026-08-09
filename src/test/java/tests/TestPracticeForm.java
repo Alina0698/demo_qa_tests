@@ -15,7 +15,7 @@ public class TestPracticeForm extends TestBase {
                 .typeUserEmail(userEmail)
                 .setUserGender(genderFemale)
                 .typeUserNumber(userNumber)
-                .setDateOfBirth(String.valueOf(TestData.dayOfBirth), monthOfBirth, yearOfBirth)
+                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
                 .selectSubject(subject)
                 .selectHobbies(hobby)
                 .uploadPicture("test.jpg")
@@ -96,7 +96,7 @@ public class TestPracticeForm extends TestBase {
                 .setUserGender(genderFemale)
                 .typeUserNumber(userNumber)
                 .submitForm()
-        //check last name field validation
+                //check last name field validation
                 .checkModalWindowNotExist()
                 .checkErrorLastNameField(borderColor, borderColorRGB);
     }

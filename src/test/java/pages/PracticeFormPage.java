@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ResultTable;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
@@ -12,21 +13,20 @@ import static com.codeborne.selenide.Selenide.open;
 public class PracticeFormPage {
     //Elements
     CalendarComponent calendar = new CalendarComponent();
-    private SelenideElement userFirstNameInput = $("#firstName");
-    private SelenideElement userLastNameInput = $("#lastName");
-    private SelenideElement userEmailInput = $("#userEmail");
-    private SelenideElement genderContainer = $("#genterWrapper");
-    private SelenideElement userNumberInput = $("#userNumber");
-    private SelenideElement subjectsInput = $("#subjectsInput");
-    private SelenideElement hobbiesList = $("#hobbiesWrapper");
-    private SelenideElement uploadPicture = $("#uploadPicture");
-    private SelenideElement currentAddressInput = $("#currentAddress");
-    private SelenideElement stateSelect = $("#react-select-3-input");
-    private SelenideElement citySelect = $("#react-select-4-input");
-    private SelenideElement submitButton = $("#submit");
-    private SelenideElement submittedForm = $(".table-responsive");
-    private SelenideElement modalWindow = $(".modal-content");
+    ResultTable resultTable = new ResultTable();
 
+    private final SelenideElement userFirstNameInput = $("#firstName");
+    private final SelenideElement userLastNameInput = $("#lastName");
+    private final SelenideElement userEmailInput = $("#userEmail");
+    private final SelenideElement genderContainer = $("#genterWrapper");
+    private final SelenideElement userNumberInput = $("#userNumber");
+    private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement hobbiesList = $("#hobbiesWrapper");
+    private final SelenideElement uploadPicture = $("#uploadPicture");
+    private final SelenideElement currentAddressInput = $("#currentAddress");
+    private final SelenideElement stateSelect = $("#react-select-3-input");
+    private final SelenideElement citySelect = $("#react-select-4-input");
+    private final SelenideElement submitButton = $("#submit");
 
     //Actions
     public PracticeFormPage openPage() {
@@ -65,8 +65,8 @@ public class PracticeFormPage {
         return this;
     }
 
-    public PracticeFormPage setDateOfBirth(String day, String month, String year) {
-        $("#dateOfBirthInput").click();
+    public PracticeFormPage setDateOfBirth(int day, String month, String year) {
+        ;
         calendar.setDate(day, month, year);
 
         return this;
@@ -115,13 +115,13 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage checkFieldResult(String value) {
-        submittedForm.shouldHave(text(value));
+        resultTable.checkValue(value);
 
         return this;
     }
 
     public PracticeFormPage checkModalWindowNotExist() {
-        modalWindow.shouldNot(exist);
+        resultTable.checkModalPresence();
 
         return this;
     }
