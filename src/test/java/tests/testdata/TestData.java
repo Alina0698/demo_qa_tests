@@ -41,7 +41,7 @@ public class TestData {
             case "Rajasthan":
                 return faker.options().option("Jaipur", "Jaiselmer");
             default:
-                return "";
+                return null;
         }
     }
 }
