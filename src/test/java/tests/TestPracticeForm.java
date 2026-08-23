@@ -9,55 +9,58 @@ public class TestPracticeForm extends TestBase {
 
     @Test
     void successfulSubmitAllFieldsTest() {
+        TestData data = new TestData();
         practiceFormPage.openPage()
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserEmail(userEmail)
-                .setUserGender(genderFemale)
-                .typeUserNumber(userNumber)
-                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
-                .selectSubject(subject)
-                .selectHobbies(hobby)
+                .typeUserFirstName(data.firstName)
+                .typeUserLastName(data.lastName)
+                .typeUserEmail(data.userEmail)
+                .setUserGender(data.gender)
+                .typeUserNumber(data.userNumber)
+                .setDateOfBirth(data.dayOfBirth, data.monthOfBirth, data.yearOfBirth)
+                .selectSubject(data.subject)
+                .selectHobbies(data.hobby)
                 .uploadPicture("test.jpg")
-                .setCurrentAddress(currentAddress)
-                .setState(state).setCity(city)
+                .setCurrentAddress(data.currentAddress)
+                .setState(data.state).setCity(data.city)
                 .submitForm()
                 //check submitted values
-                .checkFieldResult(firstName)
-                .checkFieldResult(lastName)
-                .checkFieldResult(userEmail)
-                .checkFieldResult(genderFemale)
-                .checkFieldResult(userNumber)
-                .checkFieldResult(yearOfBirth)
-                .checkFieldResult(monthOfBirth)
-                .checkFieldResult(String.valueOf(TestData.dayOfBirth))
-                .checkFieldResult(subject)
-                .checkFieldResult(hobby)
+                .checkFieldResult(data.firstName)
+                .checkFieldResult(data.lastName)
+                .checkFieldResult(data.userEmail)
+                .checkFieldResult(data.gender)
+                .checkFieldResult(data.userNumber)
+                .checkFieldResult(data.yearOfBirth)
+                .checkFieldResult(data.monthOfBirth)
+                .checkFieldResult(String.valueOf(data.dayOfBirth))
+                .checkFieldResult(data.subject)
+                .checkFieldResult(data.hobby)
                 .checkFieldResult("test.jpg")
-                .checkFieldResult(currentAddress)
-                .checkFieldResult(state)
-                .checkFieldResult(city);
+                .checkFieldResult(data.currentAddress)
+                .checkFieldResult(data.state)
+                .checkFieldResult(data.city);
     }
 
     @Test
     void successfulSubmitRequiredFieldsTest() {
+        TestData data = new TestData();
         practiceFormPage.openPage()
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserEmail(userEmail)
-                .setUserGender(genderFemale)
-                .typeUserNumber(userNumber)
+                .typeUserFirstName(data.firstName)
+                .typeUserLastName(data.lastName)
+                .typeUserEmail(data.userEmail)
+                .setUserGender(data.gender)
+                .typeUserNumber(data.userNumber)
                 .submitForm()
                 //check submitted values
-                .checkFieldResult(firstName)
-                .checkFieldResult(lastName)
-                .checkFieldResult(userEmail)
-                .checkFieldResult(genderFemale)
-                .checkFieldResult(userNumber);
+                .checkFieldResult(data.firstName)
+                .checkFieldResult(data.lastName)
+                .checkFieldResult(data.userEmail)
+                .checkFieldResult(data.gender)
+                .checkFieldResult(data.userNumber);
     }
 
     @Test
     void negativeSubmitEmptyFieldsTest() {
+        TestData data = new TestData();
         practiceFormPage.openPage()
                 .submitForm()
                 //check modal window not exist
@@ -66,39 +69,42 @@ public class TestPracticeForm extends TestBase {
 
     @Test
     void phoneFieldValidationTest() {
+        TestData data = new TestData();
         practiceFormPage.openPage()
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .setUserGender(genderFemale)
-                .typeUserNumber(userInvalidNumber)
+                .typeUserFirstName(data.firstName)
+                .typeUserLastName(data.lastName)
+                .setUserGender(data.gender)
+                .typeUserNumber(data.userInvalidNumber)
                 .submitForm()
                 //check phone field validation
                 .checkModalWindowNotExist()
-                .checkErrorPhoneField(borderColor, borderColorRGB);
+                .checkErrorPhoneField(data.borderColor, data.borderColorRGB);
     }
 
     @Test
     void firstNameFieldValidationTest() {
+        TestData data = new TestData();
         practiceFormPage.openPage()
-                .typeUserLastName(lastName)
-                .setUserGender(genderFemale)
-                .typeUserNumber(userNumber)
+                .typeUserLastName(data.lastName)
+                .setUserGender(data.gender)
+                .typeUserNumber(data.userNumber)
                 .submitForm()
                 //check first name field validation
                 .checkModalWindowNotExist()
-                .checkErrorFirstNameField(borderColor, borderColorRGB);
+                .checkErrorFirstNameField(data.borderColor, data.borderColorRGB);
     }
 
     @Test
     void lastNameFieldValidationTest() {
+        TestData data = new TestData();
         practiceFormPage.openPage()
-                .typeUserFirstName(firstName)
-                .setUserGender(genderFemale)
-                .typeUserNumber(userNumber)
+                .typeUserFirstName(data.firstName)
+                .setUserGender(data.gender)
+                .typeUserNumber(data.userNumber)
                 .submitForm()
                 //check last name field validation
                 .checkModalWindowNotExist()
-                .checkErrorLastNameField(borderColor, borderColorRGB);
+                .checkErrorLastNameField(data.borderColor, data.borderColorRGB);
     }
 
 }
